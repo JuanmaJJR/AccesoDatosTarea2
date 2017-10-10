@@ -103,9 +103,8 @@ public class ModeloAux {
 	}
 
 	public void volcar() {
-		if ( dec.equals("SQL")) {
 			modelo.volcar();
-		}
+		
 		
 	}
 

@@ -15,12 +15,23 @@ import java.util.StringTokenizer;
 
 public class ModeloFichero implements AccesoDatos {
 	private Jugador jugador;
+	private DBConnection dbconnection;
+	public DBConnection getDbconnection() {
+		return dbconnection;
+	}
+
+	public void setDbconnection(DBConnection dbconnection) {
+		this.dbconnection = dbconnection;
+	}
+
 	private ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
 	
 	
 	
 	@Override
 	public ArrayList<Jugador> Consul() {  
+		dbconnection = new DBConnection();
+		dbconnection.conexion();
 
 		
 		
@@ -113,6 +124,53 @@ public class ModeloFichero implements AccesoDatos {
 
 	@Override
 	public void volcar() {
+		
+
+		try (BufferedReader br = new BufferedReader(new FileReader("fichero/jugadores.txt"))) {
+			StringTokenizer st = null;
+        String line;
+       
+        while ((line = br.readLine()) != null) {
+        	 ArrayList<String> datos = new ArrayList<String>() ;
+        	
+        	
+        	
+        	int count;
+        	st = new StringTokenizer(line,"-");
+        	while(st.hasMoreTokens()) {
+        		
+        		
+        		datos.add(String.valueOf(st.nextToken()));
+        		
+        		System.out.println(datos);
+        	}
+        	
+        	
+     
+        	
+        	String query = "INSERT INTO `Jugadores` (`ID`, `Nombre`, `Apellido`, `Posicion`, `Equipo`) VALUES (NULL, '" + datos.get(1)
+    				+ "', '" +  datos.get(2) + "', '" + datos.get(3) + "', '" + datos.get(4) + "')";
+        	String query2 = "DELETE FROM `jugadores`";
+        	try {
+    			Statement stmt = dbconnection.getConexion().createStatement();
+    		//	stmt.executeUpdate(query2);
+    			stmt.executeUpdate(query);
+    			System.out.println("Jugador añadido correctamente");
+    			stmt.close();
+    			// principal.refreshTabla();
+
+    		} catch (SQLException s) {
+    			s.printStackTrace();
+    		}
+            
+        }
+        
+        br.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+		
+		
 		
 		
 	}

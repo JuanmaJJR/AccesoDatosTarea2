@@ -21,6 +21,7 @@ public class Test {
 		ModeloFichero modelofichero = new ModeloFichero();
 		modeloSQL.cargarConfiguracion(conexion.getUser(), conexion.getPwd(), conexion.getDb(), conexion.getHost(), conexion.getPuerto());
 		modeloSQL.setDbconnection(conexion);
+		modelofichero.setDbconnection(conexion);
 		conexion.setModelo(modeloSQL);
 		
 		
