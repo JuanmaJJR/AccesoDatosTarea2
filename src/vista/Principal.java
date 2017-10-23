@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controlador.Controlador;
+import modelo.Equipo;
 import modelo.Jugador;
 import modelo.ModeloSQL;
 
@@ -31,6 +32,7 @@ public class Principal extends JFrame {
 	private ModeloSQL modeloSQL;
 	private String iddel;
 	private String resp;
+	private Equipo equipo;
 
 	private JScrollPane scrollPane;
 
@@ -154,7 +156,7 @@ public class Principal extends JFrame {
 	public void pintarTabla(Jugador jugador) {
 		
 		modelotab.addRow(new Object[] { jugador.getID(), jugador.getNombre(), jugador.getApellido(),
-				jugador.getPosicion(), jugador.getEquipo() });
+				jugador.getPosicion(),jugador.getEquipo().getNombre()});
 		
 		
 		

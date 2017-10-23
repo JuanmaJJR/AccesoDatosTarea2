@@ -1,9 +1,3 @@
-1-Cristano-Ronaldo-Delantero-Real Madrid
-2-Leonardo-Messi-Delantero-Barcelona
-0-sd-sd-ds-ds
-1-asd-asf-asf-asf
-2-dd-cc-ss-xx
-1-asd-asf-asf-asf
-2-dd-cc-ss-xx
-3-peter-peter-portero-realmadrid
-0-Iker-Casillas-Portero-RealMadrid
+1-Cristano-Ronaldo-Delantero-1
+2-Leonardo-Messi-Delantero-2
+0-Iker-Casillas-Portero-1

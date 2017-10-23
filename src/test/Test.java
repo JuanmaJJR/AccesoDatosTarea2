@@ -4,6 +4,7 @@ package test;
 
 import controlador.Controlador;
 import modelo.DBConnection;
+import modelo.Equipo;
 import modelo.Jugador;
 import modelo.ModeloAux;
 import modelo.ModeloFichero;
@@ -15,6 +16,7 @@ public class Test {
 	public static void main(String[] args) {
 		Controlador controlador = new Controlador();
 		Jugador jugador = new Jugador(null, null, null, null, null);
+		Equipo equipo = new Equipo(null,null);
 		ModeloSQL modeloSQL = new ModeloSQL();
 		DBConnection conexion = new DBConnection();
 		ModeloAux modeloaux = new ModeloAux();
@@ -28,7 +30,9 @@ public class Test {
 		
 		controlador.setModelo(modeloaux);
 		modeloSQL.setJugador(jugador);
+		modeloSQL.setEquipo(equipo);
 		modelofichero.setJugador(jugador);
+		modelofichero.setEquipo(equipo);
 		jugador.setModelo(modeloSQL);
 		
 	
@@ -45,6 +49,7 @@ public class Test {
 		
 		principal.setModelo(modeloSQL);
 		principal.setJugador(jugador);
+		// duda principal.setEquipo(equipo);
 		
 		
 		controlador.setVista(principal);

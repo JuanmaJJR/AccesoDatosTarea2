@@ -16,7 +16,9 @@ public class ModeloSQL implements AccesoDatos {
 	private DBConnection dbconnection;
 	private Principal principal;
 	private Jugador jugador;
+	private Equipo equipo;
 	private String query;
+	private String query2;
 	private String user;
 	private String pwd;
 	private String db;
@@ -200,22 +202,25 @@ public class ModeloSQL implements AccesoDatos {
 
 		// this.setPrincipal(principal);
 
-		query = "SELECT * FROM idd.jugadores";
+		query = "SELECT * FROM jugadores JOIN equipos on jugadores.ID_Equipo = equipos.ID";
 		try {
 
 			if (dbconnection != null) {
 
 				Statement stmt = dbconnection.getConexion().createStatement();
-				ResultSet rset = stmt.executeQuery(query);
 
+				ResultSet rset = stmt.executeQuery(query);
+				//System.out.println(rset2.getString("ID"));
 				while (rset.next()) {
+					equipo = new Equipo(rset.getString(6),rset.getString(7));
 					jugador = new Jugador(rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4),
-							rset.getString(5));
+							equipo);
 					System.out.println(jugador);
 					jugadores.add(jugador);
 
 				}
 				rset.close();
+
 				stmt.close();
 
 			} else {
@@ -226,6 +231,14 @@ public class ModeloSQL implements AccesoDatos {
 			s.printStackTrace();
 		}
 		return jugadores;
+	}
+
+	public Equipo getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
 	}
 
 	@Override

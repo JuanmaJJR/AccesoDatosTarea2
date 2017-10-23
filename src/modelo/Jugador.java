@@ -10,18 +10,17 @@ public class Jugador {
 	private String nombre;
 	private String apellido;
 	private String posicion;
-	private String equipo;
+	private Equipo equipo;
 	
 	
 	
-	public Jugador(String ID, String nombre, String apellido, String posicion, String equipo) {
+	public Jugador(String ID, String nombre, String apellido, String posicion, Equipo equipo) {
 		
 		this.ID= ID;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.posicion = posicion;
 		this.equipo = equipo;
-		
 		
 	}
 
@@ -107,15 +106,27 @@ public class Jugador {
 
 
 
-	public String getEquipo() {
+
+
+
+
+	public Equipo getEquipo() {
 		return equipo;
 	}
 
 
 
-	public void setEquipo(String equipo) {
+
+
+
+
+	public void setEquipo(Equipo equipo) {
 		this.equipo = equipo;
 	}
+
+
+
+	
 
 
 
