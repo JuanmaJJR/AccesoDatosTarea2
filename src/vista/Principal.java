@@ -175,7 +175,8 @@ public class Principal extends JFrame {
 	public void seleccion() {
 		String[] opciones = {
 	            "SQL",
-	            "Fichero"
+	            "Fichero",
+	            "Hibernate"
 	        };
 	         resp = (String) JOptionPane.showInputDialog(null, "Seleccione la opción requerida", "Opciones", JOptionPane.DEFAULT_OPTION, null, opciones, opciones[0]);
 	        if(resp.equals("SQL")) {

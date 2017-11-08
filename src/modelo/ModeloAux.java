@@ -26,7 +26,7 @@ public class ModeloAux {
 
 		}
 
-		else {
+		else if(selec.equals("Fichero")) {
 
 			modelo = new ModeloFichero();
 
@@ -39,6 +39,19 @@ public class ModeloAux {
 				
 			}
 
+		}
+		else {
+			modelo = new ModeloHibernate();
+
+			jugador = modelo.Consul();
+			System.out.println("el array de jugador: " + jugador);
+
+			for (int i = 0; i < jugador.size(); i++) {
+				System.out.println("tuvilllaaaaa");
+				principal.pintarTabla(jugador.get(i));
+				
+			}
+			
 		}
 	}
 

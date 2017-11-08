@@ -15,8 +15,8 @@ import vista.Principal;
 public class Test {
 	public static void main(String[] args) {
 		Controlador controlador = new Controlador();
-		Jugador jugador = new Jugador(null, null, null, null, null);
-		Equipo equipo = new Equipo(null,null);
+		Jugador jugador = new Jugador(-1, null, null, null, null);
+		Equipo equipo = new Equipo(-1,null);
 		ModeloSQL modeloSQL = new ModeloSQL();
 		DBConnection conexion = new DBConnection();
 		ModeloAux modeloaux = new ModeloAux();

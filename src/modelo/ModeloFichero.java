@@ -66,12 +66,14 @@ public class ModeloFichero implements AccesoDatos {
 
 					if (datos2.get(0).equals(datos.get(4))) {
 						System.out.println("entra???");
-						equipo = new Equipo(null, datos2.get(1));
+						equipo = new Equipo(-1, datos2.get(1));
 						System.out.println("DENTRO" + equipo);
 
 					}
 					System.out.println("eso---->" + datos.get(4));
-					jugador = new Jugador(datos.get(0), datos.get(1), datos.get(2), datos.get(3), equipo);
+					
+					jugador = new Jugador( Integer.parseInt(datos.get(0)), datos.get(1), datos.get(2), datos.get(3), equipo);
+					
 					System.out.println("el jugador: " + jugador);
 					jugadores.add(jugador);
 

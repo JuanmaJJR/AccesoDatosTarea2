@@ -212,8 +212,8 @@ public class ModeloSQL implements AccesoDatos {
 				ResultSet rset = stmt.executeQuery(query);
 				//System.out.println(rset2.getString("ID"));
 				while (rset.next()) {
-					equipo = new Equipo(rset.getString(6),rset.getString(7));
-					jugador = new Jugador(rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4),
+					equipo = new Equipo(Integer.parseInt(rset.getString(6)),rset.getString(7));
+					jugador = new Jugador(Integer.parseInt(rset.getString(1)), rset.getString(2), rset.getString(3), rset.getString(4),
 							equipo);
 					System.out.println(jugador);
 					jugadores.add(jugador);

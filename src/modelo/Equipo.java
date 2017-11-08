@@ -1,19 +1,24 @@
 package modelo;
 
 public class Equipo {
-	private String ID;
+	private int ID;
 	private String nombre;
 	
 	
 	
-	public Equipo(String iD, String nombre) {
+	public Equipo(int iD, String nombre) {
 		ID = iD;
 		this.nombre = nombre;
 	}
-	public String getID() {
+	
+	public Equipo() {
+
+	}
+	
+	public int getID() {
 		return ID;
 	}
-	public void setID(String iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 	public String getNombre() {

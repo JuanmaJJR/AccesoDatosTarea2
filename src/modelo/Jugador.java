@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class Jugador {
 	ModeloSQL modeloSQL;
-	private String ID;
+	private int ID;
 	private String nombre;
 	private String apellido;
 	private String posicion;
@@ -14,13 +14,20 @@ public class Jugador {
 	
 	
 	
-	public Jugador(String ID, String nombre, String apellido, String posicion, Equipo equipo) {
+	public Jugador(int ID, String nombre, String apellido, String posicion, Equipo equipo) {
+		
 		
 		this.ID= ID;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.posicion = posicion;
 		this.equipo = equipo;
+		
+		
+	}
+	public Jugador() {
+		
+		
 		
 	}
 
@@ -50,7 +57,7 @@ public class Jugador {
 
 
 
-	public String getID() {
+	public int getID() {
 		return ID;
 	}
 
@@ -60,7 +67,7 @@ public class Jugador {
 
 
 
-	public void setID(String iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 
