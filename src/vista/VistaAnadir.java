@@ -15,7 +15,9 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class VistaAnadir extends JFrame {
 	
@@ -27,7 +29,9 @@ public class VistaAnadir extends JFrame {
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtPosicion;
-	private JTextField txtEquipo;
+	private JComboBox<String> txtEquipo;
+	private ArrayList<String> equipos = new ArrayList<String>();
+
 	
 	
 	
@@ -89,19 +93,23 @@ public class VistaAnadir extends JFrame {
 		lblEquipo.setBounds(251, 108, 46, 14);
 		panel.add(lblEquipo);
 		
-		txtEquipo = new JTextField();
+		this.txtEquipo = new JComboBox();
 		txtEquipo.setBounds(307, 105, 86, 20);
 		panel.add(txtEquipo);
-		txtEquipo.setColumns(10);
+	
+		
 		
 		JButton btnAadirJugador = new JButton("A\u00F1adir jugador");
 		btnAadirJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controlador.guardarDatos(txtNombre.getText(),txtApellido.getText(),txtPosicion.getText(),txtEquipo.getText());
+				controlador.guardarDatos(txtNombre.getText(),txtApellido.getText(),txtPosicion.getText(),txtEquipo.getName());
 			}
 		});
 		btnAadirJugador.setBounds(62, 213, 103, 23);
 		panel.add(btnAadirJugador);
+		
+		
+		
 	}
 	
 	
@@ -120,5 +128,15 @@ public class VistaAnadir extends JFrame {
 	}
 	public void setControlador(Controlador controlador) {
 		this.controlador = controlador;
+	}
+
+
+	public void cargaEquipos() {
+		equipos = controlador.comboEquipos();
+		for (int i = 0; i < equipos.size();i++) {
+			txtEquipo.addItem(equipos.get(i));
+		}
+		// TODO Auto-generated method stub
+		
 	}
 }

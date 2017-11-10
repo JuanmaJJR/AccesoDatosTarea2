@@ -3,16 +3,20 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
 public class ModeloHibernate implements AccesoDatos {
 	Session s;
 	private SessionFactory sessionFactory;
 	private String query;
 	private ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+	Equipo equipo1;
+	Jugador jugador1;
 
 	
 	public ModeloHibernate() {
@@ -23,6 +27,23 @@ public class ModeloHibernate implements AccesoDatos {
 	@Override
 	public void AddPlayer(String nombre, String apellido, String posicion, String equipo) {
 		// TODO Auto-generated method stub
+		s.beginTransaction();
+		if(equipo.equals("Real Madrid")) {
+			 this.equipo1 = new Equipo(1,equipo);
+			
+		}
+		else if(equipo.equals("Barcelona")) {
+			 this.equipo1 = new Equipo(2,equipo);
+			
+		}
+		else if(equipo.equals("Oporto")) {
+			 this.equipo1 = new Equipo(3,equipo);
+			
+		}
+		
+		 this.jugador1 = new Jugador(-1,nombre, apellido, posicion, equipo1);
+		s.save(jugador1);
+		s.getTransaction().commit();
 		
 	}
 

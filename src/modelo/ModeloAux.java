@@ -1,5 +1,8 @@
 package modelo;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import vista.Principal;
@@ -11,6 +14,9 @@ public class ModeloAux {
 	private AccesoDatos modelo;
 	private ArrayList<Jugador> jugador;
 	private String dec;
+	private DBConnection dbconnection;
+	private ArrayList<String> equipos = new ArrayList<String>();
+
 
 	public void ini(String selec) {
 
@@ -118,5 +124,40 @@ public class ModeloAux {
 		modelo.volcar();
 
 	}
+
+	public ArrayList<String> comboEquipos() {
+		System.out.println("2");
+		dbconnection = new DBConnection();
+		dbconnection.conexion();
+		String query = "SELECT nombre FROM `equipos`";
+	
+		try {
+
+			if (dbconnection != null) {
+
+				Statement stmt = dbconnection.getConexion().createStatement();
+
+				ResultSet rset = stmt.executeQuery(query);
+				//System.out.println(rset2.getString("ID"));
+			   
+			    int i=0;
+				while (rset.next()) {	
+					equipos.add(rset.getString(1));
+				i++;
+				}
+				rset.close();
+
+				stmt.close();
+
+			} else {
+				System.out.println("NULO");
+			}
+
+		} catch (SQLException s) {
+			s.printStackTrace();
+		}
+		return equipos;
+	}
+	
 
 }

@@ -1,5 +1,7 @@
 package controlador;
 
+import java.util.ArrayList;
+
 import modelo.AccesoDatos;
 import modelo.ModeloAux;
 import modelo.ModeloSQL;
@@ -47,6 +49,7 @@ public class Controlador {
 		vistaAnadir = new VistaAnadir();
 		vistaAnadir.setModeloaux(modeloaux);
 		vistaAnadir.setControlador(this);
+		vistaAnadir.cargaEquipos();
 		modeloaux.setVista(principal);
 		vistaAnadir.setVisible(true);
 	}
@@ -70,6 +73,11 @@ public class Controlador {
 		// TODO Auto-generated method stub
 		modeloaux.volcar();
 		
+	}
+
+	public ArrayList<String> comboEquipos() {
+		System.out.println("1");
+		return modeloaux.comboEquipos();
 	}
 	
 }
