@@ -22,6 +22,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class Principal extends JFrame {
 
@@ -77,7 +79,7 @@ public class Principal extends JFrame {
 		this.controlador = controlador;
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 810, 483);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -94,7 +96,7 @@ public class Principal extends JFrame {
 
 			}
 		});
-		btnAdd.setBounds(0, 217, 89, 23);
+		btnAdd.setBounds(684, 11, 101, 23);
 		contentPane.add(btnAdd);
 
 		btnEliminar = new JButton("Eliminar");
@@ -104,7 +106,7 @@ public class Principal extends JFrame {
 				controlador.delJug(iddel);
 			}
 		});
-		btnEliminar.setBounds(99, 217, 89, 23);
+		btnEliminar.setBounds(684, 45, 101, 23);
 		contentPane.add(btnEliminar);
 
 		btnEliminarTodo = new JButton("Eliminar todo");
@@ -113,7 +115,7 @@ public class Principal extends JFrame {
 				controlador.delTodo();
 			}
 		});
-		btnEliminarTodo.setBounds(198, 217, 118, 23);
+		btnEliminarTodo.setBounds(672, 411, 113, 23);
 		contentPane.add(btnEliminarTodo);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -123,7 +125,7 @@ public class Principal extends JFrame {
 				
 			}
 		});
-		scrollPane.setBounds(0, 0, 434, 184);
+		scrollPane.setBounds(35, 95, 603, 272);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
@@ -135,8 +137,13 @@ public class Principal extends JFrame {
 				controlador.volcar();
 			}
 		});
-		btnVolcar.setBounds(335, 217, 89, 23);
+		btnVolcar.setBounds(684, 79, 101, 23);
 		contentPane.add(btnVolcar);
+		
+		JLabel lblJugadores = new JLabel("JUGADORES");
+		lblJugadores.setFont(new Font("Times New Roman", Font.PLAIN, 34));
+		lblJugadores.setBounds(245, 28, 225, 56);
+		contentPane.add(lblJugadores);
 
 	}
 

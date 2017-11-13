@@ -18,6 +18,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import java.awt.Component;
+import javax.swing.Box;
+import java.awt.Color;
+import javax.swing.JTextArea;
 
 public class VistaAnadir extends JFrame {
 	
@@ -31,6 +35,7 @@ public class VistaAnadir extends JFrame {
 	private JTextField txtPosicion;
 	private JComboBox<String> txtEquipo;
 	private ArrayList<String> equipos = new ArrayList<String>();
+	private JTextField textField;
 
 	
 	
@@ -46,55 +51,59 @@ public class VistaAnadir extends JFrame {
 	 */
 	public VistaAnadir() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 810, 483);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 434, 261);
+		panel.setBounds(0, 0, 794, 444);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblAadirJugador = new JLabel("A\u00F1adir Jugador");
 		lblAadirJugador.setFont(new Font("Sylfaen", Font.BOLD, 30));
-		lblAadirJugador.setBounds(102, 11, 219, 40);
+		lblAadirJugador.setBounds(70, 11, 219, 40);
 		panel.add(lblAadirJugador);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(10, 70, 46, 14);
+		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNombre.setBounds(70, 70, 86, 34);
 		panel.add(lblNombre);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(65, 67, 86, 20);
+		txtNombre.setBounds(166, 80, 86, 20);
 		panel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		JLabel lblApellido = new JLabel("Apellido:");
-		lblApellido.setBounds(10, 108, 46, 14);
+		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblApellido.setBounds(70, 140, 75, 20);
 		panel.add(lblApellido);
 		
 		txtApellido = new JTextField();
-		txtApellido.setBounds(65, 105, 86, 20);
+		txtApellido.setBounds(166, 140, 86, 20);
 		panel.add(txtApellido);
 		txtApellido.setColumns(10);
 		
 		JLabel lblPosicion = new JLabel("Posicion:");
-		lblPosicion.setBounds(251, 70, 46, 14);
+		lblPosicion.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblPosicion.setBounds(70, 218, 86, 20);
 		panel.add(lblPosicion);
 		
 		txtPosicion = new JTextField();
 		txtPosicion.setColumns(10);
-		txtPosicion.setBounds(307, 67, 86, 20);
+		txtPosicion.setBounds(166, 221, 86, 20);
 		panel.add(txtPosicion);
 		
 		JLabel lblEquipo = new JLabel("Equipo: ");
-		lblEquipo.setBounds(251, 108, 46, 14);
+		lblEquipo.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblEquipo.setBounds(70, 304, 75, 20);
 		panel.add(lblEquipo);
 		
 		this.txtEquipo = new JComboBox();
-		txtEquipo.setBounds(307, 105, 86, 20);
+		txtEquipo.setBounds(166, 304, 86, 20);
 		panel.add(txtEquipo);
 	
 		
@@ -105,8 +114,36 @@ public class VistaAnadir extends JFrame {
 				controlador.guardarDatos(txtNombre.getText(),txtApellido.getText(),txtPosicion.getText(),txtEquipo.getName());
 			}
 		});
-		btnAadirJugador.setBounds(62, 213, 103, 23);
+		btnAadirJugador.setBounds(99, 387, 120, 23);
 		panel.add(btnAadirJugador);
+		
+		JLabel lblAadirEquipo = new JLabel("A\u00F1adir Equipo");
+		lblAadirEquipo.setFont(new Font("Sylfaen", Font.BOLD, 30));
+		lblAadirEquipo.setBounds(501, 11, 219, 40);
+		panel.add(lblAadirEquipo);
+		
+		JLabel label = new JLabel("Nombre:");
+		label.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		label.setBounds(501, 70, 86, 34);
+		panel.add(label);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(597, 80, 123, 20);
+		panel.add(textField);
+		
+		JLabel lblDescripcion = new JLabel("Descripcion:");
+		lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblDescripcion.setBounds(486, 126, 101, 34);
+		panel.add(lblDescripcion);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(597, 138, 120, 107);
+		panel.add(textArea);
+		
+		JButton btnAadirEquipo = new JButton("A\u00F1adir equipo");
+		btnAadirEquipo.setBounds(558, 387, 120, 23);
+		panel.add(btnAadirEquipo);
 		
 		
 		
