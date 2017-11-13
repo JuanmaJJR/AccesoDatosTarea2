@@ -145,6 +145,10 @@ public class VistaAnadir extends JFrame {
 		btnAadirEquipo.setBounds(558, 387, 120, 23);
 		panel.add(btnAadirEquipo);
 		
+		Component verticalStrut = Box.createVerticalStrut(20);
+		verticalStrut.setBounds(381, 0, 25, 444);
+		panel.add(verticalStrut);
+		
 		
 		
 	}
