@@ -38,7 +38,7 @@ public class VistaAnadir extends JFrame {
 	private JTextField txtApellido;
 	private JTextField txtPosicion;
 	private JComboBox<String> txtEquipo;
-	private ArrayList<String> equipos = new ArrayList<String>();
+	private ArrayList<String> equipos;
 	private JTextField textField;
 	private boolean primeraVez = true;
 
@@ -188,13 +188,14 @@ public class VistaAnadir extends JFrame {
 
 	public void cargaEquipos() {
 		
-		if(primeraVez) {
+			equipos = new ArrayList<String>();
 			equipos = controlador.comboEquipos();
 			for (int i = 0; i < equipos.size();i++) {
 				txtEquipo.addItem(equipos.get(i));
 			}
 			primeraVez = false;
-		}
+	
+		
 		
 		// TODO Auto-generated method stub
 		

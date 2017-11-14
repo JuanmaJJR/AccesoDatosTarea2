@@ -15,7 +15,7 @@ public class ModeloAux {
 	private ArrayList<Jugador> jugador;
 	private String dec;
 	private DBConnection dbconnection;
-	private ArrayList<String> equipos = new ArrayList<String>();
+	private ArrayList<String> equipos;
 
 
 	public void ini(String selec) {
@@ -129,6 +129,7 @@ public class ModeloAux {
 		System.out.println("2");
 		dbconnection = new DBConnection();
 		dbconnection.conexion();
+		equipos = new ArrayList<String>();
 		String query = "SELECT nombre FROM `equipos`";
 	
 		try {
