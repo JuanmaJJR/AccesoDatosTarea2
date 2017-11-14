@@ -9,5 +9,6 @@ public interface AccesoDatos {
 	public void DelAll();
 	public ArrayList<Jugador> Consul();
 	public void volcar();
+	public void AddEquipo(String nombre, String descripcion);
 	
 }

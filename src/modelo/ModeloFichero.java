@@ -177,4 +177,10 @@ public class ModeloFichero implements AccesoDatos {
 		this.equipo = equipo;
 	}
 
+	@Override
+	public void AddEquipo(String nombre, String descripcion) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

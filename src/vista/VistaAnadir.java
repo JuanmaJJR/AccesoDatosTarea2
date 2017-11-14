@@ -39,7 +39,7 @@ public class VistaAnadir extends JFrame {
 	private JTextField txtPosicion;
 	private JComboBox<String> txtEquipo;
 	private ArrayList<String> equipos;
-	private JTextField textField;
+	private JTextField equipoNombre;
 	private boolean primeraVez = true;
 
 	
@@ -118,7 +118,7 @@ public class VistaAnadir extends JFrame {
 		JButton btnAadirJugador = new JButton("A\u00F1adir jugador");
 		btnAadirJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controlador.guardarDatos(txtNombre.getText(),txtApellido.getText(),txtPosicion.getText(),txtEquipo.getName());
+				controlador.guardarDatos(txtNombre.getText(),txtApellido.getText(),txtPosicion.getText(),txtEquipo.getSelectedItem().toString());
 			}
 		});
 		btnAadirJugador.setBounds(114, 410, 120, 23);
@@ -142,24 +142,29 @@ public class VistaAnadir extends JFrame {
 		panel_1.add(label);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
-		textField = new JTextField();
-		textField.setEnabled(false);
-		textField.setBounds(142, 74, 123, 20);
-		panel_1.add(textField);
-		textField.setColumns(10);
+		equipoNombre = new JTextField();
+		equipoNombre.setEnabled(false);
+		equipoNombre.setBounds(142, 74, 123, 20);
+		panel_1.add(equipoNombre);
+		equipoNombre.setColumns(10);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion:");
 		lblDescripcion.setBounds(31, 136, 101, 34);
 		panel_1.add(lblDescripcion);
 		lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setEnabled(false);
-		textArea.setBounds(146, 147, 120, 107);
-		panel_1.add(textArea);
+		JTextArea equipoDescrip = new JTextArea();
+		equipoDescrip.setEnabled(false);
+		equipoDescrip.setBounds(146, 147, 120, 107);
+		panel_1.add(equipoDescrip);
 		
 		JButton btnAadirEquipo = new JButton("A\u00F1adir equipo");
 		btnAadirEquipo.setEnabled(false);
+		btnAadirEquipo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlador.anadirEquipo(equipoNombre.getText(),equipoDescrip.getText());
+			}
+		});
 		btnAadirEquipo.setBounds(127, 410, 120, 23);
 		panel_1.add(btnAadirEquipo);
 		

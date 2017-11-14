@@ -289,4 +289,10 @@ public class ModeloSQL implements AccesoDatos {
 
 	}
 
+	@Override
+	public void AddEquipo(String nombre, String descripcion) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

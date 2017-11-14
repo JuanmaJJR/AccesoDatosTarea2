@@ -159,6 +159,16 @@ public class ModeloAux {
 		}
 		return equipos;
 	}
+
+	public void anadirEquipo(String nombre, String descripcion) {
+		// TODO Auto-generated method stub
+		dec = principal.getResp();
+		System.out.println(dec);
+			modelo.AddEquipo(nombre, descripcion);
+			principal.refreshTabla();
+		
+		
+	}
 	
 
 }

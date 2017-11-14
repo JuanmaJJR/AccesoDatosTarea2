@@ -96,7 +96,7 @@ public class Principal extends JFrame {
 
 			}
 		});
-		btnAdd.setBounds(684, 11, 101, 23);
+		btnAdd.setBounds(659, 92, 101, 23);
 		contentPane.add(btnAdd);
 
 		btnEliminar = new JButton("Eliminar");
@@ -106,16 +106,17 @@ public class Principal extends JFrame {
 				controlador.delJug(iddel);
 			}
 		});
-		btnEliminar.setBounds(684, 45, 101, 23);
+		btnEliminar.setBounds(659, 126, 101, 23);
 		contentPane.add(btnEliminar);
 
 		btnEliminarTodo = new JButton("Eliminar todo");
+		btnEliminarTodo.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnEliminarTodo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlador.delTodo();
 			}
 		});
-		btnEliminarTodo.setBounds(672, 411, 113, 23);
+		btnEliminarTodo.setBounds(659, 189, 101, 23);
 		contentPane.add(btnEliminarTodo);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -137,7 +138,7 @@ public class Principal extends JFrame {
 				controlador.volcar();
 			}
 		});
-		btnVolcar.setBounds(684, 79, 101, 23);
+		btnVolcar.setBounds(659, 160, 101, 23);
 		contentPane.add(btnVolcar);
 		
 		JLabel lblJugadores = new JLabel("JUGADORES");

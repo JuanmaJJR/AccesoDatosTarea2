@@ -28,9 +28,9 @@ public class ModeloHibernate implements AccesoDatos {
 	public void AddPlayer(String nombre, String apellido, String posicion, String equipo) {
 		// TODO Auto-generated method stub
 		s.beginTransaction();
+		System.out.println(equipo);
 		if(equipo.equals("Real Madrid")) {
 			 this.equipo1 = new Equipo(1,equipo);
-			
 		}
 		else if(equipo.equals("Barcelona")) {
 			 this.equipo1 = new Equipo(2,equipo);
@@ -80,6 +80,18 @@ public class ModeloHibernate implements AccesoDatos {
 	@Override
 	public void volcar() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void AddEquipo(String nombre, String descripcion) {
+		// TODO Auto-generated method stub
+		s.beginTransaction();
+		this.equipo1 = new Equipo(1,nombre);
+		s.save(equipo1);
+		s.getTransaction().commit();
+		System.out.println("todo guay");
+		
 		
 	}
 

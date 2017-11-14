@@ -79,5 +79,12 @@ public class Controlador {
 		System.out.println("1");
 		return modeloaux.comboEquipos();
 	}
+
+	public void anadirEquipo(String nombre,String descripcion) {
+		// TODO Auto-generated method stub
+		modeloaux.anadirEquipo(nombre,descripcion);
+		
+		
+	}
 	
 }
