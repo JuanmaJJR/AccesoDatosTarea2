@@ -17,6 +17,7 @@ public class ModeloFichero implements AccesoDatos {
 	private Jugador jugador;
 	private Equipo equipo;
 	private DBConnection dbconnection;
+	private int eq;
 
 	public DBConnection getDbconnection() {
 		return dbconnection;
@@ -186,7 +187,33 @@ public class ModeloFichero implements AccesoDatos {
 	@Override
 	public void escribeTodos(ArrayList<Jugador> jugadores) {
 		// TODO Auto-generated method stub
+		FileWriter fw;
+		for(int x=0;x<jugadores.size();x++) {
+			  jugador = jugadores.get(x);
+			  equipo = jugador.getEquipo();
+			  if(equipo.getNombre().equals("Real Madrid")) {
+				  eq = 1;
+			  }
+			else if(equipo.getNombre().equals("Barcelona")) {
+				 eq = 2;
+				
+				}
+			else if(equipo.getNombre().equals("Oporto")) {
+				 eq = 3;
+				}
 		
+		try {
+			fw = new FileWriter("fichero/jugadores.txt", true);
+			BufferedWriter bw = new BufferedWriter(fw);
+			PrintWriter pw = new PrintWriter(bw);
+			pw.println("0" + "-" + jugador.getNombre() + "-" + jugador.getApellido() + "-" + jugador.getPosicion() + "-" + eq);
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	}
 
 }
