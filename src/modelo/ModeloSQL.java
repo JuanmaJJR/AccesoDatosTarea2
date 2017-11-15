@@ -25,6 +25,7 @@ public class ModeloSQL implements AccesoDatos {
 	private String host;
 	private String puerto;
 	private ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+	private int eq;
 
 	public void cargarConfiguracion(String user, String pwd, String db, String host, String puerto) {
 		this.user = user;
@@ -37,8 +38,21 @@ public class ModeloSQL implements AccesoDatos {
 	@Override
 	public void AddPlayer(String nombre, String apellido, String posicion, String equipo) {
 		System.out.println("LLLLLLLLLLLOL");
-		query = "INSERT INTO `Jugadores` (`ID`, `Nombre`, `Apellido`, `Posicion`, `Equipo`) VALUES (NULL, '" + nombre
-				+ "', '" + apellido + "', '" + posicion + "', '" + equipo + "')";
+		if(equipo.equals("Real Madrid")) {
+			  eq = 1;
+		}
+		else if(equipo.equals("Barcelona")) {
+			 eq = 2;
+			
+		}
+		else if(equipo.equals("Oporto")) {
+			 eq = 3;
+			
+		}
+		
+		
+		query = "INSERT INTO `Jugadores` (`ID`, `Nombre`, `Apellido`, `Posicion`, `ID_Equipo`) VALUES (NULL, '" + nombre
+				+ "', '" + apellido + "', '" + posicion + "', '" + eq + "')";
 
 		try {
 			Statement stmt = dbconnection.getConexion().createStatement();
@@ -49,7 +63,47 @@ public class ModeloSQL implements AccesoDatos {
 		} catch (SQLException s) {
 			s.printStackTrace();
 		}
+		
+		
 
+	}
+	
+	@Override
+	public void escribeTodos(ArrayList<Jugador> jugadores) {
+		// TODO Auto-generated method stub
+		dbconnection = new DBConnection();
+		dbconnection.conexion();
+		
+		for(int x=0;x<jugadores.size();x++) {
+			  jugador = jugadores.get(x);
+			  equipo = jugador.getEquipo();
+			  
+			  
+			  if(equipo.equals("Real Madrid")) {
+				  eq = 1;
+			  }
+			else if(equipo.equals("Barcelona")) {
+				 eq = 2;
+				
+				}
+			else if(equipo.equals("Oporto")) {
+				 eq = 3;
+				}
+			  
+			  
+			  query = "INSERT INTO `Jugadores` (`ID`, `Nombre`, `Apellido`, `Posicion`, `ID_Equipo`) VALUES (NULL, '" + jugador.getNombre()
+						+ "', '" + jugador.getApellido() + "', '" + jugador.getPosicion() + "', '" + eq + "')";
+
+				try {
+					Statement stmt = dbconnection.getConexion().createStatement();
+					stmt.executeUpdate(query);
+					System.out.println("Jugador añadido correctamente");
+					stmt.close();
+
+				} catch (SQLException s) {
+					s.printStackTrace();
+				}
+		}
 	}
 
 	@Override
@@ -69,7 +123,7 @@ public class ModeloSQL implements AccesoDatos {
 	}
 
 	@Override
-	public void DelPlayer(String iddel) {
+	public void DelPlayer(int iddel) {
 
 		query = "DELETE FROM `Jugadores` WHERE ID =" + iddel;
 
@@ -82,43 +136,6 @@ public class ModeloSQL implements AccesoDatos {
 		} catch (SQLException s) {
 			s.printStackTrace();
 		}
-
-	}
-
-	public void insertar(String nombre, String apellido, String posicion, String equipo) {
-
-		query = "INSERT INTO `Jugadores` (`ID`, `Nombre`, `Apellido`, `Posicion`, `Equipo`) VALUES (NULL, '" + nombre
-				+ "', '" + apellido + "', '" + posicion + "', '" + equipo + "')";
-
-		try {
-			Statement stmt = dbconnection.getConexion().createStatement();
-			stmt.executeUpdate(query);
-			System.out.println("Jugador añadido correctamente");
-			stmt.close();
-			// principal.refreshTabla();
-
-		} catch (SQLException s) {
-			s.printStackTrace();
-		}
-
-	}
-
-	public void delJug(String iddel) {
-		query = "DELETE FROM `Jugadores` WHERE ID =" + iddel;
-
-		try {
-			Statement stmt = dbconnection.getConexion().createStatement();
-			stmt.executeUpdate(query);
-			System.out.println("Jugador borrado correctamente");
-			stmt.close();
-			// principal.refreshTabla();
-		} catch (SQLException s) {
-			s.printStackTrace();
-		}
-
-	}
-
-	public void delTodo() {
 
 	}
 
@@ -242,7 +259,7 @@ public class ModeloSQL implements AccesoDatos {
 	}
 
 	@Override
-	public void volcar() {
+	public void volcar(String tipo) {
 
 		dbconnection = new DBConnection();
 		dbconnection.conexion();
@@ -294,5 +311,7 @@ public class ModeloSQL implements AccesoDatos {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }

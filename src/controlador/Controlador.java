@@ -58,7 +58,7 @@ public class Controlador {
 		modeloaux.guard(nombre,apellido,posicion,equipo);
 	}
 
-	public void delJug(String iddel) {
+	public void delJug(int iddel) {
 		modeloaux.DelPlayer(iddel);
 		
 	}
@@ -69,9 +69,10 @@ public class Controlador {
 		
 	}
 
-	public void volcar() {
+	public void volcar(String tipo) {
 		// TODO Auto-generated method stub
-		modeloaux.volcar();
+		
+		modeloaux.volcar(tipo);
 		
 	}
 

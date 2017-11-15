@@ -115,7 +115,7 @@ public class ModeloFichero implements AccesoDatos {
 	}
 
 	@Override
-	public void DelPlayer(String iddel) {
+	public void DelPlayer(int iddel) {
 		// TODO Auto-generated method stub
 
 	}
@@ -127,7 +127,7 @@ public class ModeloFichero implements AccesoDatos {
 	}
 
 	@Override
-	public void volcar() {
+	public void volcar(String tipo) {
 
 		try (BufferedReader br = new BufferedReader(new FileReader("fichero/jugadores.txt"))) {
 			StringTokenizer st = null;
@@ -179,6 +179,12 @@ public class ModeloFichero implements AccesoDatos {
 
 	@Override
 	public void AddEquipo(String nombre, String descripcion) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void escribeTodos(ArrayList<Jugador> jugadores) {
 		// TODO Auto-generated method stub
 		
 	}

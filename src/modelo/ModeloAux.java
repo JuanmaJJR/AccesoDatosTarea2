@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import vista.Principal;
+import vista.VistaAnadir;
 
 public class ModeloAux {
 
@@ -73,16 +74,20 @@ public class ModeloAux {
 			principal.refreshTabla();
 		}
 
+
 	}
 
-	public void DelPlayer(String iddel) {
+	public void DelPlayer(int iddel) {
 		dec = principal.getResp();
 		System.out.println(dec);
 		if (dec.equals("SQL")) {
 			modelo.DelPlayer(iddel);
 			principal.refreshTabla();
 		}
-
+		if (dec.equals("Hibernate")) {
+			modelo.DelPlayer(iddel);
+			principal.refreshTabla();
+		}
 	}
 
 	public void DelAll() {
@@ -124,8 +129,41 @@ public class ModeloAux {
 		ModeloAux = modeloAux;
 	}
 
-	public void volcar() {
-		modelo.volcar();
+	public void volcar(String tipo) {
+		//modelo.volcar(tipo);
+		AccesoDatos modeloaux = null;
+		
+		jugador = modelo.Consul();
+		
+		if(tipo.equals("SQL")) {
+
+			
+			 modeloaux = new ModeloSQL();
+			
+
+			
+		}
+		if(tipo.equals("Fichero")) {
+			
+			
+			 modeloaux = new ModeloFichero();
+			
+			
+		}
+		if(tipo.equals("Hibernate")) {
+			
+			 modeloaux = new ModeloHibernate();
+			
+			
+			
+		}
+		
+		if(modeloaux!=null) {
+			modeloaux.escribeTodos(jugador);
+		}else {
+			// EXCEPCION
+		}
+		
 
 	}
 

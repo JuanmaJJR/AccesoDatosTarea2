@@ -24,6 +24,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JComboBox;
 
 public class Principal extends JFrame {
 
@@ -32,7 +33,7 @@ public class Principal extends JFrame {
 	private JButton btnEliminarTodo;
 	private Controlador controlador;
 	private ModeloSQL modeloSQL;
-	private String iddel;
+	private int iddel;
 	private String resp;
 	private Equipo equipo;
 
@@ -102,7 +103,7 @@ public class Principal extends JFrame {
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				iddel=(String) table.getValueAt(table.getSelectedRow(),0);
+				iddel= (int) table.getValueAt(table.getSelectedRow(),0);
 				controlador.delJug(iddel);
 			}
 		});
@@ -116,7 +117,7 @@ public class Principal extends JFrame {
 				controlador.delTodo();
 			}
 		});
-		btnEliminarTodo.setBounds(659, 189, 101, 23);
+		btnEliminarTodo.setBounds(659, 157, 101, 23);
 		contentPane.add(btnEliminarTodo);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -131,20 +132,28 @@ public class Principal extends JFrame {
 
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		JComboBox comboBox = new JComboBox();
+		comboBox.addItem("SQL");
+		comboBox.addItem("Fichero");
+		comboBox.addItem("Hibernate");
+		comboBox.setBounds(10, 411, 73, 20);
+		contentPane.add(comboBox);
 		
 		JButton btnVolcar = new JButton("Volcar");
 		btnVolcar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controlador.volcar();
+				controlador.volcar(comboBox.getSelectedItem().toString());
 			}
 		});
-		btnVolcar.setBounds(659, 160, 101, 23);
+		btnVolcar.setBounds(93, 410, 101, 23);
 		contentPane.add(btnVolcar);
 		
 		JLabel lblJugadores = new JLabel("JUGADORES");
 		lblJugadores.setFont(new Font("Times New Roman", Font.PLAIN, 34));
 		lblJugadores.setBounds(245, 28, 225, 56);
 		contentPane.add(lblJugadores);
+		
+		
 
 	}
 

@@ -1,5 +1,8 @@
 package modelo;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,10 +14,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class ModeloHibernate implements AccesoDatos {
+	private DBConnection dbconnection;
 	Session s;
 	private SessionFactory sessionFactory;
 	private String query;
 	private ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+
 	Equipo equipo1;
 	Jugador jugador1;
 
@@ -48,8 +53,13 @@ public class ModeloHibernate implements AccesoDatos {
 	}
 
 	@Override
-	public void DelPlayer(String iddel) {
+	public void DelPlayer(int iddel) {
 		// TODO Auto-generated method stub
+		s.beginTransaction();
+		Query q= s.createQuery("delete from Jugador WHERE id ='"+iddel+"'");
+		q.executeUpdate();
+		s.getTransaction().commit();
+		System.out.println("borrado uno con exito");
 		
 	}
 
@@ -82,10 +92,48 @@ public class ModeloHibernate implements AccesoDatos {
 		return jugadores;
 	}
 
+	
 	@Override
-	public void volcar() {
+	public void volcar(String tipo) {
 		// TODO Auto-generated method stub
+		if(tipo.equals("SQL")) {
+			dbconnection = new DBConnection();
+			dbconnection.conexion();
+
+			// this.setPrincipal(principal);
+			
+			Query q = s.createQuery("SELECT j FROM Jugador j");
+			List results = q.list();
+			
+			
+			Iterator consulta = results.iterator();
+
+			while (consulta.hasNext()) {
+				Jugador jugador = (Jugador) consulta.next();
+				equipo1 = jugador.getEquipo();
+				query = "INSERT INTO `Jugadores` (`ID`, `Nombre`, `Apellido`, `Posicion`, `ID_Equipo`) VALUES (NULL, '" + jugador.getNombre()
+						+ "', '" + jugador.getApellido() + "', '" + jugador.getPosicion() + "', '" + equipo1.getID() + "')";
+
+				try {
+					Statement stmt = dbconnection.getConexion().createStatement();
+					stmt.executeUpdate(query);
+					System.out.println("Jugador añadido correctamente");
+					stmt.close();
+					// principal.refreshTabla();
+
+				} catch (SQLException s) {
+					s.printStackTrace();
+				}
+			}
+			
+		}
 		
+		
+		
+		
+		else if(tipo.equals("Fichero")) {
+			
+		}
 	}
 
 	@Override
@@ -97,6 +145,22 @@ public class ModeloHibernate implements AccesoDatos {
 		s.getTransaction().commit();
 		System.out.println("todo guay");
 		
+		
+	}
+
+	@Override
+	public void escribeTodos(ArrayList<Jugador> jugadores) {
+		
+		s.beginTransaction();
+
+		
+		
+		for(int x=0;x<jugadores.size();x++) {
+			  s.save(jugadores.get(x));
+		}
+		
+		s.getTransaction().commit();
+
 		
 	}
 
