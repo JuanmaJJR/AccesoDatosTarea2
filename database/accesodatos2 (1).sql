@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2017 at 10:10 AM
+-- Generation Time: Nov 15, 2017 at 11:51 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -62,10 +62,21 @@ CREATE TABLE `jugadores` (
 --
 
 INSERT INTO `jugadores` (`ID`, `Nombre`, `Apellido`, `Posicion`, `ID_Equipo`) VALUES
-(6, 'Iker', 'Casillas', 'Portero', 3),
-(7, 'Cristiano', 'Ronaldo', 'Delantero', 1),
-(8, 'Leonardo', 'Messi', 'Delantero', 2),
-(9, 'Edu', 'Lafoz', 'AFK', 3);
+(1, 'Guillermo', 'Tuvilla', 'Mid', 1),
+(2, 'Cristiano', 'Ronaldo', 'Delantero', 1),
+(3, 'Leonardo', 'Messi', 'Delantero', 2),
+(4, 'Guillermo', 'Tuvilla', 'Mid', 1),
+(5, 'Guillermo', 'Tuvilla', 'Mid', 1),
+(6, 'Guillermo', 'Tuvilla', 'Mid', 1),
+(7, 'Eduardo', 'Lafoz', 'Mid', 1),
+(8, 'Guillermo', 'Tuvilla', 'Mid', 1),
+(9, 'Cristiano', 'Ronaldo', 'Delantero', 1),
+(10, 'Leonardo', 'Messi', 'Delantero', 2),
+(11, 'Guillermo', 'Tuvilla', 'Mid', 1),
+(12, 'Guillermo', 'Tuvilla', 'Mid', 1),
+(13, 'Guillermo', 'Tuvilla', 'Mid', 1),
+(14, 'Eduardo', 'Lafoz', 'Mid', 1),
+(15, 'Guillermo', 'Tuvilla', 'Mid', 1);
 
 --
 -- Indexes for dumped tables
@@ -98,16 +109,16 @@ ALTER TABLE `equipos`
 -- AUTO_INCREMENT for table `jugadores`
 --
 ALTER TABLE `jugadores`
-  MODIFY `ID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `equipos`
+-- Constraints for table `jugadores`
 --
-ALTER TABLE `equipos`
-  ADD CONSTRAINT `equipos_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `jugadores` (`ID_Equipo`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `jugadores`
+  ADD CONSTRAINT `jugadores_ibfk_1` FOREIGN KEY (`ID_Equipo`) REFERENCES `equipos` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

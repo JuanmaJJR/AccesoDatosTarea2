@@ -79,14 +79,14 @@ public class ModeloSQL implements AccesoDatos {
 			  equipo = jugador.getEquipo();
 			  
 			  
-			  if(equipo.equals("Real Madrid")) {
+			  if(equipo.getNombre().equals("Real Madrid")) {
 				  eq = 1;
 			  }
-			else if(equipo.equals("Barcelona")) {
+			else if(equipo.getNombre().equals("Barcelona")) {
 				 eq = 2;
 				
 				}
-			else if(equipo.equals("Oporto")) {
+			else if(equipo.getNombre().equals("Oporto")) {
 				 eq = 3;
 				}
 			  

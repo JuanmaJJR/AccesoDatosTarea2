@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2017 at 11:02 AM
+-- Generation Time: Nov 15, 2017 at 11:52 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -39,9 +39,9 @@ CREATE TABLE `equipos` (
 --
 
 INSERT INTO `equipos` (`ID`, `nombre`, `Descripcion`) VALUES
-(1, 'Real Madrid', 'El mejor equipo '),
+(1, 'Real Madrid', 'El mejor equipo'),
 (2, 'Barcelona', 'El peor equipo'),
-(3, 'Oporto', 'Un equipo sin mas');
+(3, 'Oporto', 'Portugueses');
 
 -- --------------------------------------------------------
 
@@ -62,9 +62,7 @@ CREATE TABLE `jugadores` (
 --
 
 INSERT INTO `jugadores` (`ID`, `Nombre`, `Apellido`, `Posicion`, `ID_Equipo`) VALUES
-(6, 'Iker', 'Casillas', 'Portero', 3),
-(7, 'Cristiano', 'Ronaldo', 'Delantero', 1),
-(8, 'Leonardo', 'Messi', 'Delantero', 2);
+(17, 'Wilson', 'Peter', 'Parker', 2);
 
 --
 -- Indexes for dumped tables
@@ -97,16 +95,16 @@ ALTER TABLE `equipos`
 -- AUTO_INCREMENT for table `jugadores`
 --
 ALTER TABLE `jugadores`
-  MODIFY `ID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `equipos`
+-- Constraints for table `jugadores`
 --
-ALTER TABLE `equipos`
-  ADD CONSTRAINT `equipos_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `jugadores` (`ID_Equipo`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `jugadores`
+  ADD CONSTRAINT `jugadores_ibfk_1` FOREIGN KEY (`ID_Equipo`) REFERENCES `equipos` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
