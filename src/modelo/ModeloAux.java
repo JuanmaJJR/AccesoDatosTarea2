@@ -93,6 +93,10 @@ public class ModeloAux {
 			modelo.DelAll();
 			principal.refreshTabla();
 		}
+		if (dec.equals("Hibernate")) {
+			modelo.DelAll();
+			principal.refreshTabla();
+		}
 
 	}
 

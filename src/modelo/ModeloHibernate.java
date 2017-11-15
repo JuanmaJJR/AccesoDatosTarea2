@@ -56,6 +56,11 @@ public class ModeloHibernate implements AccesoDatos {
 	@Override
 	public void DelAll() {
 		// TODO Auto-generated method stub
+		s.beginTransaction();
+		Query q= s.createQuery("delete from Jugador ");
+		q.executeUpdate();
+		s.getTransaction().commit();
+		System.out.println("borrado todo con exito");
 		
 	}
 
