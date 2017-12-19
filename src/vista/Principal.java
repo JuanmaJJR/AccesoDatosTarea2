@@ -41,6 +41,8 @@ public class Principal extends JFrame {
 
 	private Jugador jugador;
 	private static   JTable table;
+	
+	DefaultTableModel modelotab = new DefaultTableModel();	
 
 	public Controlador getControlador() {
 		return controlador;
@@ -66,7 +68,7 @@ public class Principal extends JFrame {
 		this.jugador = jugador;
 	}
 
-	DefaultTableModel modelotab = new DefaultTableModel();
+
 
 	/**
 	 * Launch the application.
@@ -153,6 +155,15 @@ public class Principal extends JFrame {
 		lblJugadores.setBounds(245, 28, 225, 56);
 		contentPane.add(lblJugadores);
 		
+		JButton btnUpdate = new JButton("Actualizar");
+		btnUpdate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				refreshTabla();
+			}
+		});
+		btnUpdate.setBounds(683, 410, 101, 23);
+		contentPane.add(btnUpdate);
+		
 		
 
 	}
@@ -171,6 +182,12 @@ public class Principal extends JFrame {
 	}
 
 	public void pintarTabla(Jugador jugador) {
+		
+		Jugador prueba = jugador;
+		
+		System.out.println("PINTAR TABLA " + prueba.getNombre());
+		System.out.println("PINTAR TABLA " + prueba.getEquipo().getNombre());
+		
 		
 		modelotab.addRow(new Object[] { jugador.getID(), jugador.getNombre(), jugador.getApellido(),
 				jugador.getPosicion(),jugador.getEquipo().getNombre()});
@@ -193,7 +210,8 @@ public class Principal extends JFrame {
 		String[] opciones = {
 	            "SQL",
 	            "Fichero",
-	            "Hibernate"
+	            "Hibernate",
+	            "JSON-PHP"
 	        };
 	         resp = (String) JOptionPane.showInputDialog(null, "Seleccione la opción requerida", "Opciones", JOptionPane.DEFAULT_OPTION, null, opciones, opciones[0]);
 	        if(resp.equals("SQL")) {

@@ -12,5 +12,9 @@
 	<classpathentry kind="lib" path="C:/Users/juan.jusue/Desktop/Librerias/javassist-3.18.1-GA.jar"/>
 	<classpathentry kind="lib" path="C:/Users/juan.jusue/Desktop/Librerias/jboss-logging-3.3.0.Final.jar"/>
 	<classpathentry kind="lib" path="C:/Users/juan.jusue/Desktop/Librerias/mysql-connector-java-5.1.22-bin.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/json_simple-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/okhttp-2.6.0.jar"/>
+	<classpathentry kind="lib" path="lib/okio-1.6.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

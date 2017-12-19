@@ -47,14 +47,30 @@ public class ModeloAux {
 			}
 
 		}
-		else {
+		else if(selec.equals("Hibernate")) {
 			modelo = new ModeloHibernate();
 
 			jugador = modelo.Consul();
 			System.out.println("el array de jugador: " + jugador);
 
 			for (int i = 0; i < jugador.size(); i++) {
-				System.out.println("tuvilllaaaaa");
+				//System.out.println("tuvilllaaaaa");
+				principal.pintarTabla(jugador.get(i));
+				
+			}
+			
+		}
+		else {
+			modelo = new ModeloJSON();
+			jugador = modelo.Consul();
+			
+			System.out.println("el array de jugador: " + jugador);
+
+			for (int i = 0; i < jugador.size(); i++) {
+				//System.out.println("tuvilllaaaaa");
+				
+
+				
 				principal.pintarTabla(jugador.get(i));
 				
 			}
@@ -85,6 +101,10 @@ public class ModeloAux {
 			principal.refreshTabla();
 		}
 		if (dec.equals("Hibernate")) {
+			modelo.DelPlayer(iddel);
+			principal.refreshTabla();
+		}
+		else {
 			modelo.DelPlayer(iddel);
 			principal.refreshTabla();
 		}
