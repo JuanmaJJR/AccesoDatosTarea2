@@ -161,8 +161,17 @@ public class ModeloJSON implements AccesoDatos {
 
 	@Override
 	public void DelAll() {
-		// TODO Auto-generated method stub
-
+		GET = "deleteAll.php";
+		String url = SERVER_PATH + GET; // Sacadas de configuracion
+		
+		System.out.println("La url a la que lanzamos la petición es " + url);
+		
+		try {
+			String response = encargadoPeticiones.getRequest(url);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

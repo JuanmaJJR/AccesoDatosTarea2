@@ -122,6 +122,10 @@ public class ModeloAux {
 			modelo.DelAll();
 			principal.refreshTabla();
 		}
+		else{
+			modelo.DelAll();
+			principal.refreshTabla();
+		}
 
 	}
 
@@ -177,6 +181,13 @@ public class ModeloAux {
 			
 			
 		}
+		if(tipo.equals("JSON-PHP")) {
+			
+			 modeloaux = new ModeloJSON();
+			
+			
+		}
+		
 		
 		if(modeloaux!=null) {
 			modeloaux.escribeTodos(jugador);
