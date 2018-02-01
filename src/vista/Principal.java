@@ -174,7 +174,7 @@ public class Principal extends JFrame {
 				controlador.actualizar(iddel,jugadoresfin);
 			}
 		});
-		btnActualizar.setBounds(671, 344, 113, 23);
+		btnActualizar.setBounds(659, 191, 101, 23);
 		contentPane.add(btnActualizar);
 		
 		
