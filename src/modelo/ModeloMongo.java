@@ -71,17 +71,11 @@ public class ModeloMongo implements AccesoDatos {
 
 	@Override
 	public void DelPlayer(int iddel) {
-		collection = db.getCollection("equipos");
-		// TODO Auto-generated method stub
-		for (int i = 0; i < jugadoresfin.size(); i++) {
-			if(iddel==jugadoresfin.get(i).getID()) {
-				System.out.println("El jugador es: "+jugadoresfin.get(i).getNombre());
-				System.out.println(jugadoresfin);	
-				
-				
+				collection = db.getCollection("equipos");
+	
 				Document match = new Document();
 
-				match.put("nombre", jugadoresfin.get(i).getEquipo().getNombre());
+				match.put("jugadores.id", iddel);
 
 				Document addressSpec = new Document();
 				addressSpec.put("id", iddel);
@@ -90,15 +84,37 @@ public class ModeloMongo implements AccesoDatos {
 				delete.put("$pull", new BasicDBObject("jugadores", addressSpec));
 
 				collection.updateOne(match, delete);
-			}
-		}		
+			
+			
 	}
 
 	@Override
 	public void DelAll() {
 		// TODO Auto-generated method stub
+		collection = db.getCollection("equipos");
+		// TODO Auto-generated method stub
+		for (int i = 0; i < jugadoresfin.size(); i++) {
+				System.out.println("El jugador es: "+jugadoresfin.get(i).getNombre());
+				System.out.println(jugadoresfin);	
+				
+				
+				Document match = new Document();
 
+				match.put("jugadores.id", jugadoresfin.get(i).getID());
+
+				Document addressSpec = new Document();
+				addressSpec.put("id", jugadoresfin.get(i).getID());
+
+				Document delete = new Document();
+				delete.put("$pull", new BasicDBObject("jugadores", addressSpec));
+
+				collection.updateOne(match, delete);
+			
+		}		
 	}
+		
+
+	
 
 	@Override
 	public ArrayList<Jugador> Consul() {
