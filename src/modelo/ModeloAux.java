@@ -60,6 +60,18 @@ public class ModeloAux {
 			}
 			
 		}
+		else if(selec.equals("Mongo")) {
+			modelo = new ModeloMongo();
+
+			jugador = modelo.Consul();
+			System.out.println("el array de jugador: " + jugador);
+
+			for (int i = 0; i < jugador.size(); i++) {
+				//System.out.println("tuvilllaaaaa");
+				principal.pintarTabla(jugador.get(i));
+				
+			}
+		}
 		else {
 			modelo = new ModeloJSON();
 			jugador = modelo.Consul();

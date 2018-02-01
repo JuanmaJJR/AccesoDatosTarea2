@@ -44,11 +44,9 @@ public class ModeloJSON implements AccesoDatos {
 		}
 		else if(equipo.equals("Barcelona")) {
 			 eq = 2;
-			
 		}
 		else if(equipo.equals("Oporto")) {
 			 eq = 3;
-			
 		}
 
 		jsonObj.put("nombre",nombre);

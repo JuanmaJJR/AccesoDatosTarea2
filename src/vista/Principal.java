@@ -211,7 +211,8 @@ public class Principal extends JFrame {
 	            "SQL",
 	            "Fichero",
 	            "Hibernate",
-	            "JSON-PHP"
+	            "JSON-PHP",
+	            "Mongo"
 	        };
 	         resp = (String) JOptionPane.showInputDialog(null, "Seleccione la opción requerida", "Opciones", JOptionPane.DEFAULT_OPTION, null, opciones, opciones[0]);
 	        if(resp.equals("SQL")) {
