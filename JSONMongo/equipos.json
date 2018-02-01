@@ -1,0 +1,46 @@
+[
+	{
+        "id": 1,
+        "nombre": "Real Madrid",
+        "jugadores":[
+			{
+				"id": 1,
+				"nombre":"Cristiano",
+				"apellido":"Ronaldo",
+				"posicion":"Delantero"
+			},
+			{
+				"id": 2,
+				"nombre":"Luka",
+				"apellido":"Modric",
+				"posicion":"Medio"
+			}			
+		]
+    },
+	{
+        "id": 2,
+        "nombre": "Barcelona",
+        "jugadores":[
+			{
+				"id": 3,
+				"nombre":"Leonardo",
+				"apellido":"Messi",
+				"posicion":"Delantero"
+			}
+		]
+
+    },
+	{
+        "id": 3,
+        "nombre": "Oporto",
+        "jugadores": [
+			{
+				"id": 4,
+				"nombre":"Iker",
+				"apellido":"Casillas",
+				"posicion":"Portero"
+		
+			}
+		]
+    }
+]
