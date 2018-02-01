@@ -22,6 +22,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
@@ -36,6 +38,7 @@ public class Principal extends JFrame {
 	private int iddel;
 	private String resp;
 	private Equipo equipo;
+	ArrayList<Jugador> jugadoresfin = new ArrayList<Jugador>();
 
 	private JScrollPane scrollPane;
 
@@ -155,7 +158,7 @@ public class Principal extends JFrame {
 		lblJugadores.setBounds(245, 28, 225, 56);
 		contentPane.add(lblJugadores);
 		
-		JButton btnUpdate = new JButton("Actualizar");
+		JButton btnUpdate = new JButton("Reload");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				refreshTabla();
@@ -163,6 +166,16 @@ public class Principal extends JFrame {
 		});
 		btnUpdate.setBounds(683, 410, 101, 23);
 		contentPane.add(btnUpdate);
+		
+		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iddel= (int) table.getValueAt(table.getSelectedRow(),0);
+				controlador.actualizar(iddel,jugadoresfin);
+			}
+		});
+		btnActualizar.setBounds(671, 344, 113, 23);
+		contentPane.add(btnActualizar);
 		
 		
 
@@ -183,6 +196,7 @@ public class Principal extends JFrame {
 
 	public void pintarTabla(Jugador jugador) {
 		
+		jugadoresfin.add(jugador);
 		Jugador prueba = jugador;
 		
 		System.out.println("PINTAR TABLA " + prueba.getNombre());

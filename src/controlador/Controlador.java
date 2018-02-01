@@ -3,9 +3,11 @@ package controlador;
 import java.util.ArrayList;
 
 import modelo.AccesoDatos;
+import modelo.Jugador;
 import modelo.ModeloAux;
 import modelo.ModeloSQL;
 import vista.Principal;
+import vista.VistaActualizar;
 import vista.VistaAnadir;
 
 public class Controlador {
@@ -14,7 +16,7 @@ public class Controlador {
 	private VistaAnadir vistaAnadir;
 	private Principal principal;
 	private ModeloAux modeloaux;
-
+	private VistaActualizar vistaActualizar;
 	
 
 	public VistaAnadir getVistaAnadir() {
@@ -84,6 +86,24 @@ public class Controlador {
 	public void anadirEquipo(String nombre,String descripcion) {
 		// TODO Auto-generated method stub
 		modeloaux.anadirEquipo(nombre,descripcion);
+		
+		
+	}
+
+	public void actualizar(int iddel, ArrayList<Jugador> jugadoresfin) {
+		// TODO Auto-generated method stub
+		vistaActualizar = new VistaActualizar(iddel,jugadoresfin);
+		vistaActualizar.setModeloaux(modeloaux);
+		vistaActualizar.setControlador(this);
+		vistaActualizar.cargaEquipos();
+		modeloaux.setVista(principal);
+		vistaActualizar.setVisible(true);
+		
+	}
+
+	public void actualizarDatos(int iddel, String nombre, String apellido, String posicion, String equipo) {
+		// TODO Auto-generated method stub
+		modeloaux.actualizarEquipo(iddel,nombre,apellido,posicion,equipo);
 		
 		
 	}

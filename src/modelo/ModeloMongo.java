@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -14,6 +15,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
+
 
 
 public class ModeloMongo implements AccesoDatos {
@@ -177,6 +179,39 @@ public class ModeloMongo implements AccesoDatos {
 	public void AddEquipo(String nombre, String descripcion) {
 		// TODO Auto-generated method stub
 
+	}
+
+
+
+	@Override
+	public void actualizarJugador(int iddel, String nombre, String apellido, String posicion, String equipo) {
+		// TODO Auto-generated method stub
+		Document match = new Document();
+
+		match.put("nombre", equipo);
+		match.put("jugadores.id", iddel);
+
+		Document addressSpec = new Document();
+
+		addressSpec.put("jugadores.$.nombre", nombre);
+
+		addressSpec.put("jugadores.$.apellido", apellido);
+
+		addressSpec.put("jugadores.$.posicion", posicion);
+
+		addressSpec.put("jugadores.$.equipo", equipo);
+
+
+		Document update = new Document();
+
+		update.put("$set", addressSpec);
+
+		System.out.println(update);
+
+		// System.exit(-1);
+
+		collection.updateOne(match, update);
+		
 	}
 
 }

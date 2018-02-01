@@ -254,6 +254,12 @@ public class ModeloAux {
 		
 		
 	}
+
+	public void actualizarEquipo(int iddel, String nombre, String apellido, String posicion, String equipo) {
+		// TODO Auto-generated method stub
+		modelo.actualizarJugador(iddel,nombre,apellido,posicion,equipo);
+		principal.refreshTabla();
+	}
 	
 
 }

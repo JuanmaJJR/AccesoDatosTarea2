@@ -312,6 +312,14 @@ public class ModeloSQL implements AccesoDatos {
 		
 	}
 
+
+
+	@Override
+	public void actualizarJugador(int iddel, String nombre, String apellido, String posicion, String equipo) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 }
